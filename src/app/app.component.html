@@ -1,0 +1,55 @@
+<!-- <nav class="nav-site" >
+
+  <ol>
+    <li> <a routerLink="/home" routerLinkActive="active">Strona glowna</a></li>
+    <li> <a routerLink="/memory" routerLinkActive="active">Pamięć</a></li>
+    <li> <a routerLink="/snake" routerLinkActive="active">Snake</a></li>
+    <li> <a routerLink="/noughts_and_crosses" routerLinkActive="active">Kolko i krzyżyk</a></li>
+  </ol>
+
+</nav> -->
+<div>
+<section class="navigation">
+  <div class="nav-container">
+    <div class="brand">
+      <a href="#!">Games Room</a>
+    </div>
+    <nav>
+      <div (click)="mobilNav()" class="nav-mobile"><div id="nav-toggle"><span></span></div></div>
+      <ul class="nav-list" id="nav-list">
+        <li>
+          <a routerLink="/home" routerLinkActive="active" (click)="clouseMobileNav()">Strona glowna</a>
+        </li>
+        <li>
+          <a routerLink="/memory" routerLinkActive="active" (click)="clouseMobileNav()">Pamięć</a>
+        </li>
+        <li>
+          <a routerLink="/snake" routerLinkActive="active" (click)="clouseMobileNav()">Snake</a>
+        </li>
+        <li>
+          <a routerLink="/noughts_and_crosses" routerLinkActive="active" (click)="clouseMobileNav()">Kolko i krzyżyk</a>
+        </li>
+        <li  (click)="clickNav($event)" class="li-dropdown">
+          <a id="gry"  >Gry</a>
+          <ul  class="nav-dropdown" id="nav-dropdown" [ngStyle]="getMyStyle()">
+            <li>
+              <a routerLink="/memory" routerLinkActive="active" (click)="clouseMobileNav()">Pamięć</a>
+            </li>
+            <li>
+              <a routerLink="/snake" routerLinkActive="active" (click)="clouseMobileNav()">Snake</a>
+            </li>
+            <li>
+              <a routerLink="/noughts_and_crosses" routerLinkActive="active" (click)="clouseMobileNav()">Kolko i krzyżyk</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a routerLink="/login" routerLinkActive="active" (click)="clouseMobileNav()">Zaloguj się</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</section>
+<router-outlet></router-outlet>
+
+</div>

@@ -1,0 +1,11 @@
+<div class="memoryGame">
+  <section class="game-board">
+    <div *ngFor="let card of cardsArray, let idx = index" class="card" (click)="revealCard(card)"
+    id="idx"  >
+    <img src="/assets/img/{{card.backgroundIdx}}.jpg" alt="" [ngStyle]="getMyStyle(card)" class="imgCard">
+  </div>
+  </section>
+  <section class="score-board">
+    <app-score-board></app-score-board>
+  </section>
+</div>

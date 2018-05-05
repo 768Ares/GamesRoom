@@ -1,0 +1,73 @@
+.memoryGame{
+  display: flex;
+
+}
+
+.game-board{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+  max-width: 800px;
+  max-height: 540px;
+  padding: 20px;
+  margin: 0;
+
+}
+
+.score-board{
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.card{
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  text-align: center;
+  width: 13vw;
+  height: 13vw;
+  margin: 5px;
+
+}
+
+/* .imgCard{
+    width:auto;
+    height: auto;
+} */
+
+@media (max-width: 798px) {
+  .memoryGame{
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+
+  .memoryGame{
+    flex-direction: column;
+  }
+
+  .score-board{
+    display: flex;
+    order: 1;
+    margin-top: 0;
+  }
+
+  .game-board{
+    margin-top: 0;
+    display: flex;
+    order: 2;
+  }
+
+  .card{
+    margin-top: 0;
+    width: 23vw;
+    height: 23vw;
+    margin: 5px;
+
+  }
+}

@@ -1,0 +1,167 @@
+$color-bg: #222222;
+$color-text: #ccc;
+$border-color: #996c27;
+
+$color: rgba(131, 133, 135, 0.66);
+
+body{
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  box-sizing: border-box;
+
+
+  background-color: $color-bg;
+  color: $color-text;
+  font-family: Arial;
+
+}
+main{
+  display: flex;
+  margin-right:auto;
+  margin-left: auto;
+  align-items: center;
+  justify-content: center;
+}
+
+p{
+  margin: 0;
+  padding: 0;
+}
+
+.game{
+  justify-content: center;
+  //align-items: center;
+  margin-right: auto;
+  margin-left: auto;
+  height: 500px;
+  width: 500px;
+  margin-top: 5vh;
+  border: solid #996c27 3px;
+}
+.game_info {
+  margin-right:50px;
+  margin-left: 50px;
+  text-align: center;
+  font-size: 38px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border: solid #838587 3px;
+  background-color: #232323;
+
+  .statistics-div{
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      padding-top: 15px;
+      padding-bottom: 15px;
+      .statistics{
+          padding-left: 10px;
+          padding-right: 10px;
+          color: #996c27;
+      }
+  }
+}
+
+@media (max-width: 798px) {
+  .snakeGame{
+    width: 100%;
+    height: width;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .game{
+    height: 400px;
+    width: 400px;
+
+  }
+
+  .canvasClas{
+    height: 400px;
+    width: 400px;
+  }
+
+
+}
+
+@media screen and (max-width: 850px) {
+  .game{
+    height: 400px;
+    width: 400px;
+  }
+
+  .canvasClas{
+    height: 400px;
+    width: 400px;
+  }
+
+  .game_info {
+    margin-right:20px;
+    margin-left: 20px;
+    font-size: 28px;
+    padding: 10px;
+}
+}
+
+
+@media screen and (max-width: 670px) {
+  .snakeGame{
+    flex-direction: column;
+  }
+
+  .game{
+    height: 400px;
+    width: 400px;
+    margin-top: 5px;
+    display: flex;
+    order: 1;
+  }
+
+  .canvasClas{
+    height: 400px;
+    width: 400px;
+  }
+
+  .game_info {
+    width: 400px;
+    margin-right:20px;
+    margin-left: 20px;
+    margin-top: 20px;
+    font-size: 28px;
+    padding: 10px 0;
+    display: flex;
+    order: 2;
+}
+}
+
+@media screen and (max-width: 400px) {
+  .snakeGame{
+    flex-direction: column;
+  }
+
+  .game{
+    height: 340px;
+    width: 340px;
+    margin-top: 5px;
+    display: flex;
+    order: 1;
+  }
+
+  .canvasClas{
+    height: 340px;
+    width: 340px;
+  }
+
+  .game_info {
+    width: 340px;
+    margin-right:20px;
+    margin-left: 20px;
+    margin-top: 20px;
+    font-size: 28px;
+    padding: 10px 0;
+    display: flex;
+    order: 2;
+}
+}

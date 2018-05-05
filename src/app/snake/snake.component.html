@@ -1,0 +1,15 @@
+<main class="snakeGame">
+  <article class="game" id="container"></article>
+  <article class="game_info">
+
+      <div class="statistics-div">
+          Time: <p class="statistics">{{time}}</p>
+      </div>
+      <div class="statistics-div">
+          Eaten apples:  <p class="statistics">{{eatenApple}}</p>
+      </div>
+      <div class="statistics-div">
+        Record:  <p class="statistics"  *ngIf="statisticsList.length > 0">{{statisticsList[0].snakeAple}}</p> apples
+      </div>
+  </article>
+</main>
