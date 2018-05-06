@@ -1,6 +1,7 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { element } from 'protractor';
+import { AuthService } from './auth/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -13,9 +14,14 @@ export class AppComponent implements OnInit, AfterViewInit {
   navHide = true;
   menu: any;
   menuDisplay = 'none';
-  constructor() {}
+  constructor(public authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {}
+
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/login']);
+  }
 
   ngAfterViewInit() {
     const self = this;

@@ -147,7 +147,7 @@ export class SnakeComponent implements OnInit, AfterViewInit {
   drawBoard() {
     this.ctx.fillStyle = '#070707';
     this.ctx.fillRect(0, 0, this.canv.width, this.canv.height);
-    }
+  }
 
   drawSnake() {
     // draw body snake
@@ -199,7 +199,7 @@ export class SnakeComponent implements OnInit, AfterViewInit {
     while (this.trail.length > this.snake) {
       this.trail.shift();
     }
-    }
+  }
 
   generateApple() {
     // random generate x & y apple
@@ -269,4 +269,3 @@ export class SnakeComponent implements OnInit, AfterViewInit {
     }
   }
 }
-

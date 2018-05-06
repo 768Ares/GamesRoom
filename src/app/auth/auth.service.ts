@@ -29,7 +29,7 @@ export class AuthService {
     this.angularFire.auth
       .createUserWithEmailAndPassword(email, password)
       .then(user => {
-        console.log(user);
+        this.router.navigate(['/home']);
       })
       .catch(err => {
         console.log(err);

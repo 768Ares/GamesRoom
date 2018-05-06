@@ -12,39 +12,40 @@
 <section class="navigation">
   <div class="nav-container">
     <div class="brand">
-      <a href="#!">Games Room</a>
+      <a class="brand__link" href="#!">Games Room</a>
     </div>
-    <nav>
+    <nav class="nav-site">
       <div (click)="mobilNav()" class="nav-mobile"><div id="nav-toggle"><span></span></div></div>
       <ul class="nav-list" id="nav-list">
-        <li>
-          <a routerLink="/home" routerLinkActive="active" (click)="clouseMobileNav()">Strona glowna</a>
+        <li class="nav-list__el">
+          <a routerLink="/home" routerLinkActive="activeNav" class="nav-list__link" (click)="clouseMobileNav()">Strona glowna</a>
         </li>
-        <li>
-          <a routerLink="/memory" routerLinkActive="active" (click)="clouseMobileNav()">Pamięć</a>
+        <li class="nav-list__el">
+          <a routerLink="/memory" routerLinkActive="activeNav" class="nav-list__link" (click)="clouseMobileNav()">Pamięć</a>
         </li>
-        <li>
-          <a routerLink="/snake" routerLinkActive="active" (click)="clouseMobileNav()">Snake</a>
+        <li class="nav-list__el">
+          <a routerLink="/snake" routerLinkActive="activeNav" class="nav-list__link" (click)="clouseMobileNav()">Snake</a>
         </li>
-        <li>
-          <a routerLink="/noughts_and_crosses" routerLinkActive="active" (click)="clouseMobileNav()">Kolko i krzyżyk</a>
+        <li class="nav-list__el">
+          <a routerLink="/noughts_and_crosses" routerLinkActive="activeNav" class="nav-list__link" (click)="clouseMobileNav()">Kolko i krzyżyk</a>
         </li>
-        <li  (click)="clickNav($event)" class="li-dropdown">
-          <a id="gry"  >Gry</a>
+        <li  (click)="clickNav($event)" class="li-dropdown nav-list__el">
+          <a id="gry" class="nav-list__link">Gry</a>
           <ul  class="nav-dropdown" id="nav-dropdown" [ngStyle]="getMyStyle()">
-            <li>
-              <a routerLink="/memory" routerLinkActive="active" (click)="clouseMobileNav()">Pamięć</a>
+            <li class="nav-list__el nav-dropdown__el">
+              <a routerLink="/memory" routerLinkActive="activeNav" class="nav-list__link nav-dropdown__link" (click)="clouseMobileNav()">Pamięć</a>
             </li>
-            <li>
-              <a routerLink="/snake" routerLinkActive="active" (click)="clouseMobileNav()">Snake</a>
+            <li class="nav-list__el nav-dropdown__el">
+              <a routerLink="/snake" routerLinkActive="activeNav" class="nav-list__link nav-dropdown__link" (click)="clouseMobileNav()">Snake</a>
             </li>
-            <li>
-              <a routerLink="/noughts_and_crosses" routerLinkActive="active" (click)="clouseMobileNav()">Kolko i krzyżyk</a>
+            <li class="nav-list__el nav-dropdown__el">
+              <a routerLink="/noughts_and_crosses" routerLinkActive="activeNav" class="nav-list__link nav-dropdown__link" (click)="clouseMobileNav()">Kolko i krzyżyk</a>
             </li>
           </ul>
         </li>
-        <li>
-          <a routerLink="/login" routerLinkActive="active" (click)="clouseMobileNav()">Zaloguj się</a>
+        <li (click)="clouseMobileNav()" class="nav-list__el">
+          <a *ngIf="!authService.user" routerLink="/login" class="nav-list__link" routerLinkActive="activeNav">Zaloguj się</a>
+          <a *ngIf="authService.user" class="nav-list__link" (click)="logout()">Wyloguj się</a>
         </li>
       </ul>
     </nav>
