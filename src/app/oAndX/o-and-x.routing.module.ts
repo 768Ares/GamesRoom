@@ -1,13 +1,15 @@
 import { Routes, RouterModule } from '@angular/router';
 import { OAndXComponent } from './o-and-x.component';
 import { NgModule } from '@angular/core';
+import { AuthGuardService } from '../auth/auth-guard.service';
 
 
 
 const memoryRouting: Routes = [
   {
     path: '',
-    component: OAndXComponent
+    component: OAndXComponent,
+    canActivate: [AuthGuardService]
   }
 ];
 

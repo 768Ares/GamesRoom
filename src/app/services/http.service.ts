@@ -23,14 +23,12 @@ export class HttpService {
    }
 
    saveStatistics(list: Array<Statistics>) {
-    console.log('wywolanie saveStatistics');
     this.http.put(this.URL_DB, list[0], { params: this.getParams() }).subscribe(data => {
       console.log(data);
     });
    }
 
    generateStatistics(list: Array<Statistics>) {
-    console.log('generateStatistics');
     this.http.post(this.URL_DB, list[0], { params: this.getParams() }).subscribe(data => {
       console.log(data);
     });
