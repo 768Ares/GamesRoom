@@ -1,3 +1,21 @@
-<p>
-  o-and-x works!
-</p>
+<div class="game-conteiner">
+  <section class="room-zone" *ngIf="!userInRoom">
+    <form (ngSubmit)="newRoom(formData)" #formData='ngForm'>
+      <div class="new-room">
+          <input ngModel type="text" name="newRoom" class="new-room__input">
+          <button type="submit" class="btn new-room__btn">Utworz</button>
+      </div>
+    </form>
+    <ul class="rooms-list">
+      <li class="room" *ngFor="let room of roomsList">
+        <span class="room__name">{{room.name}}</span>
+        <span class="room__author">utworzy: <p class="room__author-name">{{room.userId}}</p></span>
+        <button type="button" class="btn" (click)="joinTheRoom(room)">Dolącz</button>
+      </li>
+    </ul>
+  </section>
+  <section class="geme-zone" *ngIf="userInRoom">
+    gra!!!
+    <button type="button" class="btn" (click)="leaveTheRoom()">Opusc pokój</button>
+  </section>
+</div>

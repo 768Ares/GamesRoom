@@ -1,0 +1,93 @@
+body {
+  box-sizing: border-box;
+}
+
+.btn {
+  color: #EEEEEE;
+  background: rgb(40, 58, 77);
+  border-radius: 3px;
+  border: 3px solid rgb(33, 100, 145);
+  box-shadow: 0 0 3px #000000 inset;
+  padding: 5px 25px;
+  width: auto;
+  max-width: 40%;
+  height: auto;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.rooms-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.room  {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  width: 350px;
+  height: 120px;
+  background: #34495E;
+  border-radius: 3px;
+  border: 3px solid #2980B9;
+  box-shadow: 0 0 3px #000000 inset;
+  padding: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.room__name {
+  padding: 0 5px;
+  font-weight: 900;
+  font-size: 16px;
+}
+
+.room__author {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  font-size: 12px;
+}
+
+.room__author-name{
+  font-weight: 800;
+  font-size: 13px;
+  padding-left: 2px;
+}
+
+.room_btn {
+  /* padding: 10px; */
+}
+
+.new-room {
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+  width: 350px;
+  height: 60px;
+  background: #34495E;
+  border-radius: 3px;
+  border: 3px solid #2980B9;
+  box-shadow: 0 0 3px #000000 inset;
+  padding: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+}
+
+.new-room__input {
+  width: 100%;
+}
+
+.new-room__btn {
+  border: none;
+}

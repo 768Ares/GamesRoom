@@ -17,6 +17,7 @@ import { AuthService } from './auth/auth.service';
 import { AuthGuardService } from './auth/auth-guard.service';
 import { HttpService } from './services/http.service';
 import { StatisticService } from './services/statistics.service';
+import { RoomService } from './services/room.service';
 
 
 
@@ -40,9 +41,10 @@ const config = {
     AppRoutingModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(config),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    FormsModule
   ],
-  providers: [AuthGuardService, AuthService, HttpService, StatisticService],
+  providers: [AuthGuardService, AuthService, HttpService, StatisticService, RoomService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
