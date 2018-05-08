@@ -14,8 +14,12 @@
       </li>
     </ul>
   </section>
-  <section class="geme-zone" *ngIf="userInRoom">
-    gra!!!
+  <section class="game-zone" *ngIf="userInRoom">
+    <div class="game-board">
+        <div *ngFor="let field of boardFields" class="board-field" (click)="selectedField(field)">
+            <img src="/assets/icons/{{field.background}}.png" alt="" [ngStyle]="getMyStyle(field)" class="imgCard">
+          </div>
+    </div>
     <button type="button" class="btn" (click)="leaveTheRoom()">Opusc pokój</button>
   </section>
 </div>

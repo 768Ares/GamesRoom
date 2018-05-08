@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { OAndXComponent } from './o-and-x.component';
 import { OAndXRoutingModule } from './o-and-x.routing.module';
 import { CommonModule } from '@angular/common';
-import { OandxService } from './services/oandx.service';
+import { BoardService } from './services/board.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
@@ -13,6 +13,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     ReactiveFormsModule,
     FormsModule],
-  providers: [OandxService]
+  providers: [BoardService]
 })
 export class OAndXModule { }

@@ -1,9 +1,10 @@
 import { OnInit, Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { RoomService } from '../services/room.service';
-import { OandxService } from './services/oandx.service';
+import { RoomService } from './services/room.service';
+import { BoardService } from './services/board.service';
 import { Room } from '../models/room';
 import { AuthService } from '../auth/auth.service';
+import { BoardFields } from '../models/boardFields';
 
 @Component({
   selector: 'app-o-and-x',
@@ -12,29 +13,43 @@ import { AuthService } from '../auth/auth.service';
 })
 export class OAndXComponent implements OnInit {
 
-  private roomName: string;
   protected roomsList: Array<Room> = [];
   protected userInRoom = false;
+  public myRoom: Room;
+  protected boardFields: Array<BoardFields> = [];
 
-  constructor(private oandxService: OandxService, private roomService: RoomService, private authService: AuthService) {
-    this.oandxService.getroomListObs().subscribe((room: Array<Room>) => {
-      this.roomsList = room;
+  constructor(private oandxService: BoardService, private roomService: RoomService, private authService: AuthService) {
+    this.roomService.getRoomListObs().subscribe((room: Array<Room>) => {
+      this.roomsList = room.filter(r => (
+        r.locked === false
+      ));
     });
-    setInterval(() => this.getRooms(), 1000);
-    // this.getRooms();
+
+    this.oandxService.getMyRoomObs().subscribe( (room: Room) => {
+      this.myRoom = room;
+      if (room) {
+        this.boardFields = room.fields;
+      }
+
+    } );
+
+    setInterval(() => this.getRoomsAndBoard(), 350);
    }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
-  getRooms() {
-    if (this.authService.user) {
-      this.roomService.getRooms();
-      console.log('pobiera rooms');
+
+  getRoomsAndBoard() {
+    if (!this.userInRoom) {
+      if (this.authService.user) {
+        this.roomService.getRooms();
+      }
     } else {
-      console.log('nie pobiera rooms');
+      this.oandxService.getMyRoom();
+      // this.roomService.getMyRoom();
     }
   }
+
 
   newRoom(formData: NgForm) {
     this.oandxService.addNewRoom(formData.value.newRoom);
@@ -46,9 +61,23 @@ export class OAndXComponent implements OnInit {
     this.roomService.lockedRoom(room);
   }
 
+
   leaveTheRoom() {
     this.userInRoom = false;
     this.roomService.leaveTheRoom();
+  }
+
+  selectedField(field: BoardFields) {
+    this.oandxService.selectedField(field);
+  }
+
+  getMyStyle(field: BoardFields) {
+    const myStyle = {
+      'width': '100%',
+      'height': 'auto',
+      'opacity': field.opacity
+    };
+    return myStyle;
   }
 
 }

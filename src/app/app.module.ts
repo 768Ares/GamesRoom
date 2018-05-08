@@ -4,10 +4,6 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
-import { MemoryComponent } from './memory/memory.component';
-import { HomeComponent } from './home/home.component';
-import { SnakeComponent } from './snake/snake.component';
-import { OAndXComponent } from './oAndX/o-and-x.component';
 import { AppRoutingModule } from './app.routing.module';
 import { LoginComponent } from './auth/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -17,7 +13,7 @@ import { AuthService } from './auth/auth.service';
 import { AuthGuardService } from './auth/auth-guard.service';
 import { HttpService } from './services/http.service';
 import { StatisticService } from './services/statistics.service';
-import { RoomService } from './services/room.service';
+import { RoomService } from './oAndX/services/room.service';
 
 
 
