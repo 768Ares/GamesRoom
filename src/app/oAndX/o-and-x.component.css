@@ -95,9 +95,9 @@ body {
 
 /* game board */
 .game-zone {
-  /* display: flex;
+  display: flex;
   flex-direction: row;
-  flex-wrap: wrap; */
+  flex-wrap: wrap;
 
 }
 .game-board {
@@ -110,6 +110,7 @@ body {
   border-radius: 3px;
   border: 3px solid #2980B9;
   box-shadow: 0 0 3px #000000 inset;
+  margin: 50px;
 }
 
 .board-field {
@@ -119,4 +120,44 @@ body {
   margin: 3px;
   background: rgb(40, 58, 77);
   padding: 15px;
+}
+
+.statistics-board {
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+}
+
+.players{
+  display: flex;
+  flex-direction: row;
+}
+
+.player{
+  display: flex;
+  flex-direction: row;
+}
+
+.player-name{
+  display: flex;
+  flex-direction: row;
+  padding: 20px;
+  font-size: 20px;
+}
+
+.score {
+  padding: 20px 5px;
+  font-size: 20px;
+}
+
+.player__turn {
+  padding: 0px 2px;
+  font-size: 20px;
+  color: #007200;
+  font-weight: 900;
+  margin: 0;
+}
+
+.btn__leave {
+  min-width: 150px;
 }

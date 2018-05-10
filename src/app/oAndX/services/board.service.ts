@@ -24,27 +24,32 @@ export class BoardService {
       if (myRoom.userId === this.authService.user.email) {
         if (this.gameOver(myRoom.fields, 'author') === true) {
           alert('Zwycięscą został: ' + myRoom.userId);
-          this.resetFields(myRoom);
+          this.resetFields(myRoom, 'author');
         }
         if (this.gameOver(myRoom.fields, 'guest') === true) {
           alert('Zwycięscą został: ' + myRoom.guestEmail);
-          this.resetFields(myRoom);
+          this.resetFields(myRoom, 'guest');
         }
       } else if (myRoom.guestEmail === this.authService.user.email) {
         if (this.gameOver(myRoom.fields, 'author') === true) {
           alert('Zwycięscą został: ' + myRoom.userId);
-          this.resetFields(myRoom);
+          this.resetFields(myRoom, 'author');
         }
         if (this.gameOver(myRoom.fields, 'guest') === true) {
           alert('Zwycięscą został: ' + myRoom.guestEmail);
-          this.resetFields(myRoom);
+          this.resetFields(myRoom, 'guest');
         }
       }
     }
   }
 
-  resetFields(myRoom: Room) {
+  resetFields(myRoom: Room, winPlayer: string) {
     myRoom.fields = this.generateNewFields();
+    if (winPlayer === 'author') {
+      myRoom.userScore += 1;
+    } else if (winPlayer === 'guest') {
+      myRoom.guestScore += 1;
+    }
     this.roomService.saveSelectedField(myRoom);
   }
 
@@ -53,6 +58,9 @@ export class BoardService {
       name: nameRoom,
       userId: this.authService.user.email,
       guestEmail: 'guest',
+      userScore: 0,
+      guestScore: 0,
+      turn: 'author',
       locked: false,
       fields: this.generateNewFields()
     };
@@ -84,20 +92,27 @@ export class BoardService {
     const myRoom = this.myRoomObs.getValue();
     if (field.locked !== true) {
       try {
-        if (myRoom.userId === this.authService.user.email) {
+        if (myRoom.userId === this.authService.user.email && myRoom.turn === 'author') {
           field.background = 'cross';
           field.player = 'author';
+          field.opacity = 1;
+          field.locked = true;
+          myRoom.fields[field.idx] = field;
+          myRoom.turn = 'guest';
+          this.roomService.saveSelectedField(myRoom);
         }
-        if (myRoom.guestEmail === this.authService.user.email) {
+        if (myRoom.guestEmail === this.authService.user.email && myRoom.turn === 'guest') {
           field.background = 'circle';
           field.player = 'guest';
+          field.opacity = 1;
+          field.locked = true;
+          myRoom.fields[field.idx] = field;
+          myRoom.turn = 'author';
+          this.roomService.saveSelectedField(myRoom);
         }
       } catch {
       }
-      field.opacity = 1;
-      field.locked = true;
-      myRoom.fields[field.idx] = field;
-      this.roomService.saveSelectedField(myRoom);
+
     }
   }
 

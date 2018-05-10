@@ -4,7 +4,10 @@ export interface Room {
   name: string;
   userId: string;
   guestEmail: string;
-  locked: boolean;
-  fields: Array<BoardFields>;
+  userScore: number;
+  guestScore: number;
+  turn: string;
+  locked?: boolean;
+  fields?: Array<BoardFields>;
   }
 

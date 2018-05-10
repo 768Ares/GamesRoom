@@ -20,6 +20,20 @@
             <img src="/assets/icons/{{field.background}}.png" alt="" [ngStyle]="getMyStyle(field)" class="imgCard">
           </div>
     </div>
-    <button type="button" class="btn" (click)="leaveTheRoom()">Opusc pokój</button>
+    <div class="statistics-board">
+      <div class="players" *ngIf="myRoom.userId">
+        <div class="player">
+          <div class="player-name"><p class="player__turn" *ngIf="myRoom.turn === 'author'"> &#x23f5; </p> {{myRoom.userId}}</div>
+          <div class="score">{{myRoom.userScore}}</div>
+        </div>
+        <div class="score">:</div>
+        <div class="player">
+          <div class="score">{{myRoom.guestScore}}</div>
+          <div class="player-name">{{myRoom.guestEmail}} <p class="player__turn" *ngIf="myRoom.turn === 'guest'"> &#x23f4; </p></div>
+        </div>
+      </div>
+      <button type="button" class="btn btn__leave" (click)="leaveTheRoom()">Opuść pokój</button>
+    </div>
+
   </section>
 </div>

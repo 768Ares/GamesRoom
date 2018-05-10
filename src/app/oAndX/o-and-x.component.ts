@@ -15,7 +15,14 @@ export class OAndXComponent implements OnInit {
 
   protected roomsList: Array<Room> = [];
   protected userInRoom = false;
-  public myRoom: Room;
+  public myRoom: Room = {
+  name: 'guest',
+  userId: 'guest',
+  guestEmail: 'guest',
+  userScore: 0,
+  guestScore: 0,
+  turn: 'author'
+};
   protected boardFields: Array<BoardFields> = [];
 
   constructor(private oandxService: BoardService, private roomService: RoomService, private authService: AuthService) {
