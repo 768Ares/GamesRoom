@@ -46,7 +46,6 @@ export class OAndXComponent implements OnInit {
       }
     } else {
       this.oandxService.getMyRoom();
-      // this.roomService.getMyRoom();
     }
   }
 

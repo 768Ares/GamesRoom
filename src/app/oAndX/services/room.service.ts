@@ -5,6 +5,8 @@ import {Observable} from 'rxjs/Observable';
 import {AuthService} from '../../auth/auth.service';
 import {Room} from '../../models/room';
 import {HttpService} from '../../services/http.service';
+import {BoardService} from './board.service';
+import {BoardFields} from '../../models/boardFields';
 
 @Injectable()
 export class RoomService {
@@ -43,8 +45,8 @@ export class RoomService {
     const list = this.roomListObs.getValue().filter(r => r !== room);
     room.locked = true;
     room.guestEmail = this.authService.user.email;
+    room.fields = this.generateNewFields();
     list.push(room);
-    console.log(room);
     this.roomListObs.next(list);
     this.saveRoomListObs();
   }
@@ -57,6 +59,21 @@ export class RoomService {
     list.push(room);
     this.roomListObs.next(list);
     this.saveRoomListObs();
+  }
+
+  generateNewFields(): Array<BoardFields> {
+    const boardFields: Array<BoardFields> = [];
+    for (let i = 0; i < 9; i++) {
+      const boardField: BoardFields = {
+        player: 'noPlayer',
+        idx: i,
+        background: 'noBackground',
+        opacity: 1,
+        locked: false
+      };
+      boardFields.push(boardField);
+    }
+    return boardFields;
   }
 
   leaveTheRoom() {

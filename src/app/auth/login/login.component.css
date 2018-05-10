@@ -1,0 +1,59 @@
+body {
+  box-sizing: border-box;
+}
+
+.btn {
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
+  color: #EEEEEE;
+  background: rgb(40, 58, 77);
+  border-radius: 10px;
+  border: 3px solid rgb(33, 100, 145);
+  box-shadow: 0 0 3px #000000 inset;
+  padding: 5px 25px;
+  width: 150px;
+  height: 35px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.log-list {
+  list-style: none;
+  margin: 0;
+  margin-top: 25px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.log-list__el  {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  width: 350px;
+  height: 30px;
+  background: #34495E;
+  border-radius: 3px;
+  box-shadow: 0 0 3px #000000 inset;
+  padding: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 15px;
+  text-align: center;
+}
+
+.log-list__input {
+  margin-top: 5px;
+  border: 2px solid #2980B9;
+  background: #25354b;
+  color: #ffffff;
+}
+
+.submits{
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+}
