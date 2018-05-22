@@ -9,30 +9,33 @@ import { BoardFields } from '../models/boardFields';
 @Component({
   selector: 'app-o-and-x',
   templateUrl: './o-and-x.component.html',
-  styleUrls: ['./o-and-x.component.css']
+  styleUrls: ['./o-and-x.component.scss']
 })
 export class OAndXComponent implements OnInit {
 
   protected roomsList: Array<Room> = [];
   protected userInRoom = false;
-  public myRoom: Room = {
-  name: 'guest',
-  userId: 'guest',
-  guestEmail: 'guest',
-  userScore: 0,
-  guestScore: 0,
-  turn: 'author'
-};
+  public myRoom: Room;
+
+  public myRoomInHtml: Room = {
+    name: 'guest',
+    userId: 'guest',
+    guestEmail: 'guest',
+    userScore: 0,
+    guestScore: 0,
+    turn: 'author'
+  };
+
   protected boardFields: Array<BoardFields> = [];
 
-  constructor(private oandxService: BoardService, private roomService: RoomService, private authService: AuthService) {
+  constructor(public boardService: BoardService, private roomService: RoomService, private authService: AuthService) {
     this.roomService.getRoomListObs().subscribe((room: Array<Room>) => {
       this.roomsList = room.filter(r => (
         r.locked === false
       ));
     });
 
-    this.oandxService.getMyRoomObs().subscribe( (room: Room) => {
+    this.boardService.getMyRoomObs().subscribe( (room: Room) => {
       this.myRoom = room;
       if (room) {
         this.boardFields = room.fields;
@@ -41,7 +44,7 @@ export class OAndXComponent implements OnInit {
     } );
 
     setInterval(() => this.getRoomsAndBoard(), 350);
-   }
+  }
 
   ngOnInit() { }
 
@@ -52,13 +55,20 @@ export class OAndXComponent implements OnInit {
         this.roomService.getRooms();
       }
     } else {
-      this.oandxService.getMyRoom();
+      this.boardService.getMyRoom();
+      try {
+          this.myRoomInHtml.userId = this.myRoom.userId;
+          this.myRoomInHtml.guestEmail = this.myRoom.guestEmail;
+          this.myRoomInHtml.userScore = this.myRoom.userScore;
+          this.myRoomInHtml.guestScore = this.myRoom.guestScore;
+          this.myRoomInHtml.turn = this.myRoom.turn;
+      } catch {}
     }
   }
 
 
   newRoom(formData: NgForm) {
-    this.oandxService.addNewRoom(formData.value.newRoom);
+    this.boardService.addNewRoom(formData.value.newRoom);
     this.userInRoom = true;
   }
 
@@ -74,7 +84,7 @@ export class OAndXComponent implements OnInit {
   }
 
   selectedField(field: BoardFields) {
-    this.oandxService.selectedField(field);
+    this.boardService.selectedField(field);
   }
 
   getMyStyle(field: BoardFields) {

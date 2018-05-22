@@ -6,7 +6,7 @@ import { StatisticService } from '../../services/statistics.service';
 @Component({
   selector: 'app-score-board',
   templateUrl: './score-board.component.html',
-  styleUrls: ['./score-board.component.css']
+  styleUrls: ['./score-board.component.scss']
 })
 export class ScoreBoardComponent implements OnInit {
   attemptIdx: number;

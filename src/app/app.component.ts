@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import {Component, OnInit, AfterViewInit, ViewEncapsulation} from '@angular/core';
 import { Router } from '@angular/router';
 import { element } from 'protractor';
 import { AuthService } from './auth/auth.service';

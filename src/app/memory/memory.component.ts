@@ -7,7 +7,7 @@ import { StatisticService } from '../services/statistics.service';
 @Component({
   selector: 'app-memory',
   templateUrl: './memory.component.html',
-  styleUrls: ['./memory.component.css']
+  styleUrls: ['./memory.component.scss']
 })
 export class MemoryComponent implements OnInit {
   private cardsLiit: number;

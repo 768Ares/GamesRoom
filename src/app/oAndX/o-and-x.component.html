@@ -2,8 +2,8 @@
   <section class="room-zone" *ngIf="!userInRoom">
     <form (ngSubmit)="newRoom(formData)" #formData='ngForm'>
       <div class="new-room">
-          <input ngModel type="text" name="newRoom" class="new-room__input">
-          <button type="submit" class="btn new-room__btn">Utworz</button>
+          <input ngModel type="text" name="newRoom" class="form__input">
+          <button type="submit" class="btn form__btn">Utworz</button>
       </div>
     </form>
     <ul class="rooms-list">
@@ -21,18 +21,19 @@
           </div>
     </div>
     <div class="statistics-board">
-      <div class="players" *ngIf="myRoom.userId">
+      <div class="players">
         <div class="player">
-          <div class="player-name"><p class="player__turn" *ngIf="myRoom.turn === 'author'"> &#x23f5; </p> {{myRoom.userId}}</div>
-          <div class="score">{{myRoom.userScore}}</div>
+          <div class="player-name"><p class="player__turn" *ngIf="myRoomInHtml.turn === 'author'"> &#x23f5; </p>
+            {{myRoomInHtml.userId}}</div>
+          <div class="score">{{myRoomInHtml.userScore}}</div>
         </div>
         <div class="score">:</div>
         <div class="player">
-          <div class="score">{{myRoom.guestScore}}</div>
-          <div class="player-name">{{myRoom.guestEmail}} <p class="player__turn" *ngIf="myRoom.turn === 'guest'"> &#x23f4; </p></div>
+          <div class="score">{{myRoomInHtml.guestScore}}</div>
+          <div class="player-name">{{myRoomInHtml.guestEmail}} <p class="player__turn" *ngIf="myRoomInHtml.turn === 'guest'"> &#x23f4; </p></div>
         </div>
       </div>
-      <button type="button" class="btn btn__leave" (click)="leaveTheRoom()">Opuść pokój</button>
+      <button type="button" class="btn mrg-center" (click)="leaveTheRoom()">Opuść pokój</button>
     </div>
 
   </section>

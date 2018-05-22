@@ -41,6 +41,7 @@ export class BoardService {
         }
       }
     }
+    return myRoom;
   }
 
   resetFields(myRoom: Room, winPlayer: string) {
